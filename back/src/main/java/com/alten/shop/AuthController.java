@@ -1,19 +1,13 @@
 package com.alten.shop;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Date;
 import java.util.Optional;
 
 @RestController
@@ -23,6 +17,9 @@ public class AuthController {
 
     @Value("${jwt.expiration}")
     private int jwtExpiration;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @Autowired
     private UserRepository userRepository;
@@ -43,12 +40,7 @@ public class AuthController {
         Optional<User> user = userRepository.findByUsername(creds.getUsername());
         if (user.isPresent()) {
             if (passwordEncoder.matches(creds.getPassword(), user.get().getPassword())) {
-                String token = Jwts.builder()
-                        .setSubject(creds.getUsername())
-                        .setIssuedAt(new Date())
-                        .setExpiration(new Date((new Date()).getTime() + jwtExpiration))
-                        .signWith(Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8)), SignatureAlgorithm.HS256)
-                        .compact();
+                String token = jwtUtil.generateToken(creds.getUsername());
                 return ResponseEntity.ok(token);
             }
         }

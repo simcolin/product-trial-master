@@ -5,8 +5,10 @@
     <div class="p-toolbar-group-center">
         {{ title }}
     </div>
-    <div class="p-toolbar-group-end">
-        <i class="pi pi-shopping-cart" style="font-size: 2rem"></i>
+    <div class="p-toolbar-group-end mr-2">
+        <button class="p-0 m-0 border-none cursor-pointer" style="background: none;" (click)="showCart()">
+            <i class="pi pi-shopping-cart" pBadge [badgeDisabled]="cartSize() === 0" value="{{ cartSize() }}" style="font-size: 2rem"></i>
+        </button>
     </div>
 </p-toolbar>
 <p-splitter 
@@ -23,3 +25,7 @@
         </div>
     </ng-template>
 </p-splitter>
+
+<p-dialog [(visible)]="isCartVisible" position="topright" header="Panier">
+    <app-cart-list />
+</p-dialog>

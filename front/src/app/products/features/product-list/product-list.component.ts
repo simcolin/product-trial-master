@@ -1,4 +1,6 @@
 import { Component, OnInit, inject, signal } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { CartService } from "app/products/data-access/cart.service";
 import { Product } from "app/products/data-access/product.model";
 import { ProductsService } from "app/products/data-access/products.service";
 import { ProductFormComponent } from "app/products/ui/product-form/product-form.component";
@@ -6,9 +8,10 @@ import { ButtonModule } from "primeng/button";
 import { CardModule } from "primeng/card";
 import { DataViewModule } from 'primeng/dataview';
 import { DialogModule } from 'primeng/dialog';
+import { RatingModule } from 'primeng/rating';
 
 const emptyProduct: Product = {
-  id: 0,
+  id: undefined,
   code: "",
   name: "",
   description: "",
@@ -29,10 +32,11 @@ const emptyProduct: Product = {
   templateUrl: "./product-list.component.html",
   styleUrls: ["./product-list.component.scss"],
   standalone: true,
-  imports: [DataViewModule, CardModule, ButtonModule, DialogModule, ProductFormComponent],
+  imports: [DataViewModule, CardModule, ButtonModule, DialogModule, ProductFormComponent, FormsModule, RatingModule],
 })
 export class ProductListComponent implements OnInit {
   private readonly productsService = inject(ProductsService);
+  private readonly cartService = inject(CartService);
 
   public readonly products = this.productsService.products;
 
@@ -50,6 +54,10 @@ export class ProductListComponent implements OnInit {
     this.editedProduct.set(emptyProduct);
   }
 
+  public onAddToCart(product: Product) {
+    this.cartService.add(product).subscribe();
+  }
+
   public onUpdate(product: Product) {
     this.isCreation = false;
     this.isDialogVisible = true;
@@ -57,7 +65,7 @@ export class ProductListComponent implements OnInit {
   }
 
   public onDelete(product: Product) {
-    this.productsService.delete(product.id).subscribe();
+    this.productsService.delete(product.id!).subscribe();
   }
 
   public onSave(product: Product) {

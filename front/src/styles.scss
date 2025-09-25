@@ -1,13 +1,13 @@
 /* PrimeNG */
-@import "~primeicons/primeicons.css";
-@import "~primeng/resources/primeng.min.css";
+@import "../node_modules/primeicons/primeicons.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
 
 /* Quill */
-@import "~quill/dist/quill.core.css";
-@import "~quill/dist/quill.snow.css";
+@import "../node_modules/quill/dist/quill.core.css";
+@import "../node_modules/quill/dist/quill.snow.css";
 
 /* Custom SCSS */
-@import "variables";
+@import "styles/variables";
 
 /* Main styles */
 html,

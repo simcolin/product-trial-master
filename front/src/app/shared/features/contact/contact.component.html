@@ -1,0 +1,34 @@
+<div class="m-4">
+    <h1 class="text-center">Contact</h1>
+    
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-field">
+            <label for="email">Email</label>
+            <input pInputText
+                type="email"
+                id="email"
+                name="email"
+                minlength="1"
+                [(ngModel)]="formContent().email"
+                required>
+        </div>
+        <div class="form-field">
+            <label for="message">Message</label>
+            <textarea pInputTextarea 
+                id="message"
+                name="message"
+                rows="5" 
+                cols="30"
+                maxlength="300"
+                minlength="1"
+                required
+                [(ngModel)]="formContent().message">
+            </textarea>
+        </div>
+        <div class="flex justify-content-between">
+            <p-button type="submit" [disabled]="!form.valid" label="Envoyer" />
+        </div>
+    </form>
+</div>
+
+<p-toast />

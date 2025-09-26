@@ -35,7 +35,6 @@ public class SecurityConfiguration {
                         .requestMatchers("/token").permitAll()
                         .anyRequest().authenticated()
                 )
-                .securityContext(security -> security.securityContextRepository(new HttpSessionSecurityContextRepository()))
                 .formLogin(AbstractHttpConfigurer::disable);
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();

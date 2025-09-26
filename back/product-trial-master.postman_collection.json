@@ -190,6 +190,81 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "DELETE cart/[id]",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/cart/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET wishlist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/wishlist",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"wishlist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST wishlist/[id]",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/wishlist/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"wishlist",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE wishlist/[id]",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/wishlist/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"wishlist",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
@@ -197,7 +272,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE3NTg4ODA4NDEsImV4cCI6MTc1ODg4NDQ0MX0.zR5-Dti2g2tn6-SdtRRjqCXtPAEMY1ZNMv56nCvY3Q4",
+				"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3NTg4ODg2NDMsImV4cCI6MTc1ODg5MjI0M30.nnhoTIuQT9Sh-p1cFUTBOiC4iCgNvlAR3n6d7Imy6g0",
 				"type": "string"
 			}
 		]

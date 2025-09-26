@@ -9,6 +9,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 
 @EnableWebSecurity
 @Configuration
@@ -32,8 +33,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/account").permitAll()
                         .requestMatchers("/token").permitAll()
-                        .anyRequest().permitAll()
+                        .anyRequest().authenticated()
                 )
+                .securityContext(security -> security.securityContextRepository(new HttpSessionSecurityContextRepository()))
                 .formLogin(AbstractHttpConfigurer::disable);
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();

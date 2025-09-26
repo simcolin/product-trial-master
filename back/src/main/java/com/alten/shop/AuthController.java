@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 public class AuthController {
     @Value("${jwt.secret}")
@@ -37,10 +39,10 @@ public class AuthController {
 
     @PostMapping("/token")
     public ResponseEntity<String> token(@RequestBody LoginCredentials creds) {
-        Optional<User> user = userRepository.findByUsername(creds.getUsername());
+        Optional<User> user = userRepository.findByEmail(creds.getEmail());
         if (user.isPresent()) {
             if (passwordEncoder.matches(creds.getPassword(), user.get().getPassword())) {
-                String token = jwtUtil.generateToken(creds.getUsername());
+                String token = jwtUtil.generateToken(creds.getEmail());
                 return ResponseEntity.ok(token);
             }
         }

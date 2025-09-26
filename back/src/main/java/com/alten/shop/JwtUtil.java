@@ -13,8 +13,10 @@ import java.util.Date;
 public class JwtUtil {
     @Value("${jwt.secret}")
     private String jwtSecret;
+
     @Value("${jwt.expiration}")
     private int jwtExpirationMs;
+
     private SecretKey key;
 
     @PostConstruct
@@ -31,7 +33,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    public String getUsernameFromToken(String token) {
+    public String getEmailFromToken(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key).build()
                 .parseClaimsJws(token)

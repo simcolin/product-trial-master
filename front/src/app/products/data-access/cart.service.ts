@@ -7,7 +7,7 @@ import { catchError, Observable, of, tap } from "rxjs";
     providedIn: "root"
 }) export class CartService {
     private readonly http = inject(HttpClient);
-    private readonly path = "/api/cart";
+    private readonly path = "http://localhost:8080/api/cart";
     
     private readonly _cart = signal<Product[]>([]);
 

@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "d7cfaa81-0ac9-4d59-b469-2b0bcddc05d9",
+		"name": "product-trial-master",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8753554"
+	},
+	"item": [
+		{
+			"name": "GET products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/products",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"code\": \"\",\r\n  \"name\": \"\",\r\n  \"description\": \"\",\r\n  \"image\": \"\",\r\n  \"category\": \"\",\r\n  \"price\": 0,\r\n  \"quantity\": 0,\r\n  \"internalReference\": \"\",\r\n  \"shellId\": 0,\r\n  \"inventoryStatus\": \"INSTOCK\",\r\n  \"rating\": 0,\r\n  \"createdAt\": 0,\r\n  \"updatedAt\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/products",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH products/[id]",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"code\": \"\",\r\n  \"name\": \"\",\r\n  \"description\": \"\",\r\n  \"image\": \"\",\r\n  \"category\": \"\",\r\n  \"price\": 0,\r\n  \"quantity\": 0,\r\n  \"internalReference\": \"\",\r\n  \"shellId\": 0,\r\n  \"inventoryStatus\": \"INSTOCK\",\r\n  \"rating\": 0,\r\n  \"createdAt\": 0,\r\n  \"updatedAt\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/products/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE products/[id]",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"code\": \"\",\r\n  \"name\": \"\",\r\n  \"description\": \"\",\r\n  \"image\": \"\",\r\n  \"category\": \"\",\r\n  \"price\": 0,\r\n  \"quantity\": 0,\r\n  \"internalReference\": \"\",\r\n  \"shellId\": 0,\r\n  \"inventoryStatus\": \"INSTOCK\",\r\n  \"rating\": 0,\r\n  \"createdAt\": 0,\r\n  \"updatedAt\": 0\r\n}"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/products/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"doe\",\r\n    \"firstname\": \"john\",\r\n    \"email\": \"email@email.com\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/account",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"email@email.com\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/token",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/cart",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST cart/[id]",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/cart/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE3NTg4ODA4NDEsImV4cCI6MTc1ODg4NDQ0MX0.zR5-Dti2g2tn6-SdtRRjqCXtPAEMY1ZNMv56nCvY3Q4",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": ""
+		}
+	]
+}

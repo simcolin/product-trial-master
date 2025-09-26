@@ -3,6 +3,7 @@ import { FormsModule } from "@angular/forms";
 import { CartService } from "app/products/data-access/cart.service";
 import { Product } from "app/products/data-access/product.model";
 import { ProductsService } from "app/products/data-access/products.service";
+import { WishlistService } from "app/products/data-access/wishlist.service";
 import { ProductFormComponent } from "app/products/ui/product-form/product-form.component";
 import { ButtonModule } from "primeng/button";
 import { CardModule } from "primeng/card";
@@ -37,6 +38,7 @@ const emptyProduct: Product = {
 export class ProductListComponent implements OnInit {
   private readonly productsService = inject(ProductsService);
   private readonly cartService = inject(CartService);
+  private readonly wishlistService = inject(WishlistService);
 
   public readonly products = this.productsService.products;
 
@@ -56,6 +58,10 @@ export class ProductListComponent implements OnInit {
 
   public onAddToCart(product: Product) {
     this.cartService.add(product).subscribe();
+  }
+
+  public onAddToWishlist(product: Product) {
+    this.wishlistService.add(product).subscribe();
   }
 
   public onUpdate(product: Product) {

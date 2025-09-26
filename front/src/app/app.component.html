@@ -6,6 +6,9 @@
         {{ title }}
     </div>
     <div class="p-toolbar-group-end mr-2">
+        <button class="p-0 m-0 border-none cursor-pointer mr-2" style="background: none;" (click)="showWishlist()">
+            <i class="pi pi-heart" pBadge [badgeDisabled]="wishlistSize() === 0" value="{{ wishlistSize() }}" style="font-size: 2rem"></i>
+        </button>
         <button class="p-0 m-0 border-none cursor-pointer" style="background: none;" (click)="showCart()">
             <i class="pi pi-shopping-cart" pBadge [badgeDisabled]="cartSize() === 0" value="{{ cartSize() }}" style="font-size: 2rem"></i>
         </button>
@@ -28,4 +31,8 @@
 
 <p-dialog [(visible)]="isCartVisible" position="topright" header="Panier">
     <app-cart-list />
+</p-dialog>
+
+<p-dialog [(visible)]="isWishlistVisible" position="topright" header="Liste de souhait">
+    <app-wishlist-list />
 </p-dialog>
